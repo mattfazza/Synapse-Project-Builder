@@ -1,12 +1,16 @@
 {
-    "project": "TREAT-AD",
+    "project": "TREAT_AD_test_11_",
     "annotations": {},
     "folders": [
         {"name": "Admin_Data"},
         {"name": "Bioinformatics"},
         {"name": "Genes", 
           "folders":[
-            {"name": "CD44"},
+            {"name": "CD44",
+              "folders": [
+                {"name": "Assays"}
+              ]
+            },
             {"name": "MSN"}
             ]
         }
