@@ -1,0 +1,14 @@
+{
+    "noname": "TREAT-AD",
+    "annotations": {},
+    "nofolders": [
+        {"noname": "Admin_Data"},
+        {"noname": "Bioinformatics"},
+        {"noname": "Genes", 
+          "nofolders":[
+            {"noname": "CD44"},
+            {"noname": "MSN"}
+            ]
+        }
+      ]
+  }
