@@ -1,5 +1,5 @@
 # synapse-project-builder
-Simple tool to build a Synapse project from a configuration file
+Simple tool to create a Synapse project's folder structure from a configuration file
 
 # Running Tests
 ```bash

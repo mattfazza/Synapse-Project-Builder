@@ -21,7 +21,7 @@ def ingestJSON(filePath):
 # create project entity in Synapse
 def createProject(projectName):
 
-    if projectName != '' or not projectName:
+    if projectName == '' or not projectName:
         sys.exit("Please provide a name.")
 
     project = Project(projectName)
@@ -36,12 +36,11 @@ def createProject(projectName):
 # create a single folder entity in Synapse
 def createFolder(name, parentId):
 
-    if name != '' or not name:
+    if name == '' or not name:
         sys.exit("Please provide a name for your folder.")
 
-    if parentId != '' or not parentId:
+    if parentId == '' or not parentId:
         sys.exit("Please provide a parentId for your folder.")
-        # parentId
 
     data_folder = Folder(name, parent=parentId)
 
@@ -57,7 +56,6 @@ def traverseFolders(current, parentId, currentPath=''):
 
     if 'name' in current:
         currentPath += '/' + current['name']
-        print("created " + currentPath + " in Synapse")
 
         # create object in Synapse
         parentId = createFolder(current['name'], parentId)
@@ -96,7 +94,6 @@ def createProjectInSynapse(path):
 
 def main():
     relativePath = Path(__file__).parent / sys.argv[1]
-    print(relativePath)
     createProjectInSynapse(relativePath)
 
 
