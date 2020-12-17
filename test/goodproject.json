@@ -1,5 +1,5 @@
 {
-    "project": "TREAT_AD_test_11_",
+    "project": "TREAD_AD_POC_0.1",
     "annotations": {},
     "folders": [
         {"name": "Admin_Data"},
@@ -8,10 +8,26 @@
           "folders":[
             {"name": "CD44",
               "folders": [
-                {"name": "Assays"}
+                {"name": "Structural"},
+                {"name": "Assay"},
+                {"name": "Chemical",
+                  "folders": [
+                    {"name": "Assay Results"}
+                  ]
+                }
               ]
             },
-            {"name": "MSN"}
+            {"name": "MSN",
+              "folders": [
+                {"name": "Structural"},
+                {"name": "Assay",
+                  "folders": [
+                    {"name": "Assay Results"}
+                  ]
+                },
+                {"name": "Chemical"}
+              ]
+            }
             ]
         }
       ]
