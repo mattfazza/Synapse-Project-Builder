@@ -19,7 +19,7 @@ def ingestJSON(filePath):
 
 
 # create project entity in Synapse
-def createProject(projectName):
+def createProject(synObj, projectName):
 
     if projectName == '' or not projectName:
         sys.exit("Please provide a name.")
@@ -27,14 +27,14 @@ def createProject(projectName):
     project = Project(projectName)
 
     try:
-        project = syn.store(project)
+        project = synObj.store(project)
     except Exception:
         sys.exit("Please provide a name that doesn't already exist.")
     return project['id']
 
 
 # create a single folder entity in Synapse
-def createFolder(name, parentId):
+def createFolder(synObj, name, parentId):
 
     if name == '' or not name:
         sys.exit("Please provide a name for your folder.")
@@ -45,26 +45,26 @@ def createFolder(name, parentId):
     data_folder = Folder(name, parent=parentId)
 
     try:
-        data_folder = syn.store(data_folder)
+        data_folder = synObj.store(data_folder)
     except Exception:  # empty names will get created named after their synID
         sys.exit("Please provide a valid name.")
     return data_folder['id']
 
 
 # traverse folder structure while creating project
-def traverseFolders(current, parentId, currentPath=''):
+def traverseFolders(synObj, current, parentId, currentPath=''):
 
     if 'name' in current:
         currentPath += '/' + current['name']
 
         # create object in Synapse
-        parentId = createFolder(current['name'], parentId)
+        parentId = createFolder(synObj, current['name'], parentId)
 
     if 'folders' not in current:  # base case
         return
 
     for i in range(len(current['folders'])):
-        traverseFolders(current['folders'][i], parentId, currentPath)
+        traverseFolders(synObj, current['folders'][i], parentId, currentPath)
 
 
 '''
@@ -77,17 +77,19 @@ following flow:
 '''
 
 
-def createProjectInSynapse(path):
+def createProjectInSynapse(path, synObj=None):
 
     projectConfig = ingestJSON(path)
 
-    global syn
-    syn = synapseclient.Synapse()
-    syn.login(rememberMe=True)
+    if synObj is None:
+        syn = synapseclient.Synapse()
+        syn.login(rememberMe=True)
+    else:
+        syn = synObj
 
-    projectId = createProject(projectConfig['project'])
+    projectId = createProject(syn, projectConfig['project'])
 
-    traverseFolders(projectConfig, projectId, projectConfig['project'])
+    traverseFolders(syn, projectConfig, projectId, projectConfig['project'])
 
     return projectId
 
