@@ -1,0 +1,13 @@
+{
+    "project": "TREAT-AD",
+    "annotations": {},
+    "folders": [
+        {"name": "Admin_Data"},
+        {"name": "Bioinformatics"},
+        {"name": "Genes", 
+          "folders":[
+            {"name": "CD44"},
+            {"name": "MSN"}
+            ]
+        }
+      ]

@@ -1,0 +1,34 @@
+{
+    "project": "TREAD_AD_POC_0.1",
+    "annotations": {},
+    "folders": [
+        {"name": "Admin_Data"},
+        {"name": "Bioinformatics"},
+        {"name": "Genes", 
+          "folders":[
+            {"name": "CD44",
+              "folders": [
+                {"name": "Structural"},
+                {"name": "Assay"},
+                {"name": "Chemical",
+                  "folders": [
+                    {"name": "Assay Results"}
+                  ]
+                }
+              ]
+            },
+            {"name": "MSN",
+              "folders": [
+                {"name": "Structural"},
+                {"name": "Assay",
+                  "folders": [
+                    {"name": "Assay Results"}
+                  ]
+                },
+                {"name": "Chemical"}
+              ]
+            }
+            ]
+        }
+      ]
+  }
